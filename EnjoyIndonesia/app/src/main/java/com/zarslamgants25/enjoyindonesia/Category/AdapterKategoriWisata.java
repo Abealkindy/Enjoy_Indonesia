@@ -70,13 +70,13 @@ class AdapterKategoriWisata extends RecyclerView.Adapter<AdapterKategoriWisata.V
         return kategoriWisatas.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    protected class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textNamaKategori;
         ImageView imageKategori;
         CardView cardKategori;
 
-        public ViewHolder(View itemView) {
+        protected ViewHolder(View itemView) {
             super(itemView);
             cardKategori = (CardView) itemView.findViewById(R.id.card_kategori);
             imageKategori = (ImageView) itemView.findViewById(R.id.gambar_kategori);

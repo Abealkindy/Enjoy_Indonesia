@@ -127,5 +127,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_detail_wisata">Detail_wisata</string>
+    <string name="title_activity_detail__news">Detail Berita</string>
     <!--===========================================================================================================================-->
 </resources>

@@ -30,11 +30,11 @@ public class Category extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        recyclerViewKategori = (RecyclerView)findViewById(R.id.recycler_category);
-        GridLayoutManager grid = new GridLayoutManager(this,2);
+        recyclerViewKategori = (RecyclerView) findViewById(R.id.recycler_category);
+        GridLayoutManager grid = new GridLayoutManager(this, 2);
         recyclerViewKategori.setLayoutManager(grid);
 
-         final String lempar = getIntent().getStringExtra("id_kota_kabupatens");
+        final String lempar = getIntent().getStringExtra("id_kota_kabupatens");
 
         String aaa = (KumpulanUrl.URL_KATEGORI_WISATA);
         queueKoategori = Volley.newRequestQueue(this);
@@ -45,7 +45,7 @@ public class Category extends AppCompatActivity {
                 GsonBuilder gsonBuilder = new GsonBuilder();
                 Gson gson2 = gsonBuilder.create();
                 parsingGson2 = gson2.fromJson(response, ParsingGson2.class);
-                AdapterKategoriWisata wisata = new AdapterKategoriWisata(Category.this,parsingGson2.kategoriWisataList,lempar);
+                AdapterKategoriWisata wisata = new AdapterKategoriWisata(Category.this, parsingGson2.kategoriWisataList, lempar);
                 recyclerViewKategori.setAdapter(wisata);
             }
         }, new Response.ErrorListener() {

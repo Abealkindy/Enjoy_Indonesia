@@ -23,8 +23,8 @@ public class ParsingGson4 {
         public String id_kota_kabupaten;
         @SerializedName("nama_kategori_wisata")
         public String id_kategori_wisata;
-        @SerializedName("popular_wisata")
-        public String popular_wisata;
+//        @SerializedName("popular_wisata")
+//        public String popular_wisata;
 //        @SerializedName("id_popular")
 //        public String id_popular;
 

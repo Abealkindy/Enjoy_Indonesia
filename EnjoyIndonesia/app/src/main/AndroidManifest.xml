@@ -17,7 +17,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -71,14 +71,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zarslamgants25.enjoyindonesia.MainActivity" />
         </activity>
-        <activity android:name=".News.ListNews" />
         <activity android:name=".Category.Category" />
         <activity android:name=".ChooseLocation.KotaActivity" />
         <activity android:name=".ChooseLocation.WisataActivity" />
         <activity
             android:name=".ChooseLocation.Detail_wisata"
             android:label="@string/title_activity_detail_wisata"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zarslamgants25.enjoyindonesia.ChooseLocation.WisataActivity" />
+        </activity>
+        <activity
+            android:name=".News.Detail_News"
+            android:label="@string/title_activity_detail__news"
+            android:parentActivityName=".News.News"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zarslamgants25.enjoyindonesia.News.News" />
+        </activity>
     </application>
 
 </manifest>

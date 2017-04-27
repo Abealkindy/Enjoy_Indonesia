@@ -59,7 +59,7 @@ Proses();
         String tangkap_id_kota_kabupaten = getIntent().getStringExtra("id_kota_kabupaten_1");
         String tangkap_id_kategori_wisata = getIntent().getStringExtra("id_kategori_wisata");
 
-        String url = "http://192.168.100.15/server_lomba/list_wisata.php?id_kota_kabupaten=" + tangkap_id_kota_kabupaten + "&id_kategori_wisata=" + tangkap_id_kategori_wisata;
+        String url = "http://31.220.53.18/muhammadabidzar/server_lomba/list_wisata.php?id_kota_kabupaten=" + tangkap_id_kota_kabupaten + "&id_kategori_wisata=" + tangkap_id_kategori_wisata;
      //     String url = (KumpulanUrl.URL_WISATA);
         Log.d("url",url);
         stringRequestWisata = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {

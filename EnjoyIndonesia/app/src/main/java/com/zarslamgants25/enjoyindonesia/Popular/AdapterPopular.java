@@ -1,8 +1,10 @@
 package com.zarslamgants25.enjoyindonesia.Popular;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.zarslamgants25.enjoyindonesia.ChooseLocation.Detail_wisata;
 import com.zarslamgants25.enjoyindonesia.Databases.ParsingGson5;
 import com.zarslamgants25.enjoyindonesia.R;
 
@@ -38,7 +41,7 @@ public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.tvNamaWisata.setText(listPopulars.get(position).judul_wisata2);
         holder.tvJenisWisata.setText(listPopulars.get(position).nama_kategori_wisata);
         holder.tvLokasi.setText(listPopulars.get(position).nama_kota_kabupaten);
@@ -47,6 +50,15 @@ public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.ViewHold
                 .crossFade()
                 .placeholder(R.drawable.ic_photo_size_select_actual_black_24dp)
                 .into(holder.imageViewPopular);
+        holder.card_popular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(v.getContext(),Detail_wisata.class);
+                a.putExtra("id_wisata", listPopulars.get(position).id_wisata2);
+                v.getContext().startActivity(a);
+            }
+        });
+
 
 
     }
@@ -56,20 +68,22 @@ public class AdapterPopular extends RecyclerView.Adapter<AdapterPopular.ViewHold
         return listPopulars.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    protected class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView tvNamaWisata;
         public TextView tvLokasi;
         public TextView tvJenisWisata;
         public ImageView imageViewPopular;
+        CardView card_popular;
 
-        public ViewHolder(View itemView) {
+        protected ViewHolder(View itemView) {
             super(itemView);
 
             tvNamaWisata = (TextView)itemView.findViewById(R.id.tvNamaWisata);
             tvLokasi = (TextView)itemView.findViewById(R.id.lokasi);
             tvJenisWisata = (TextView)itemView.findViewById(R.id.jenis_wisata);
             imageViewPopular = (ImageView)itemView.findViewById(R.id.image_wisata);
+            card_popular = (CardView)itemView.findViewById(R.id.card_wisata);
         }
     }
 }

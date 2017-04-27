@@ -1,4 +1,4 @@
-package com.zarslamgants25.enjoyindonesia.ChooseLocation;
+package com.zarslamgants25.enjoyindonesia.News;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -19,18 +19,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.zarslamgants25.enjoyindonesia.ChooseLocation.Detail_wisata;
 import com.zarslamgants25.enjoyindonesia.Databases.KumpulanUrl;
-import com.zarslamgants25.enjoyindonesia.Databases.ParsingGson6;
 import com.zarslamgants25.enjoyindonesia.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
+public class Detail_News extends AppCompatActivity {
 
-public class Detail_wisata extends AppCompatActivity {
     private WebView wvContent;
     ImageView image_detail;
     private CollapsingToolbarLayout collaptoolDetail;
@@ -39,7 +36,7 @@ public class Detail_wisata extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_wisata);
+        setContentView(R.layout.activity_detail__news);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -50,12 +47,13 @@ public class Detail_wisata extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         collaptoolDetail = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        image_detail = (ImageView) findViewById(R.id.image_detail);
-        wvContent = (WebView) findViewById(R.id.detail_content);
+        image_detail = (ImageView) findViewById(R.id.image_detail_news);
+        wvContent = (WebView) findViewById(R.id.detail_news);
         wvContent.getSettings().setJavaScriptEnabled(true);
 
-        String tangkap_id_wisata = getIntent().getStringExtra("id_wisata");
-        RequestDetailServer(KumpulanUrl.URL_DETAIL + tangkap_id_wisata);
+        String tangkap_id_news = getIntent().getStringExtra("id_news");
+        RequestDetailServer(KumpulanUrl.URL_DETAIL_NEWS + tangkap_id_news);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +63,7 @@ public class Detail_wisata extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void RequestDetailServer(String s) {
@@ -73,20 +72,14 @@ public class Detail_wisata extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
-//                GsonBuilder builder = new GsonBuilder();
-//                Gson gson = builder.create();
-//                parsing6 = gson.fromJson(response,ParsingGson6.class);
-
-                //    List<ParsingGson6.KumpulanDetail>parsing;
-
 
                 try {
                     JSONObject jsonRespons = new JSONObject(response);
                     JSONObject dataDetailArticel = jsonRespons.getJSONObject("hasil");
 
 
-                    judul = dataDetailArticel.getString("judul_wisata");
-                    isi = dataDetailArticel.getString("isi_wisata");
+                    judul = dataDetailArticel.getString("judul_news");
+                    isi = dataDetailArticel.getString("isi_news");
                     gambar = dataDetailArticel.getString("url_gambar");
 
 
@@ -101,7 +94,7 @@ public class Detail_wisata extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Detail_wisata.this, "Maaf jbhdfgd", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Detail_News.this, "Maaf jbhdfgd", Toast.LENGTH_SHORT).show();
             }
         });
         queueDetail.add(request);
@@ -118,4 +111,6 @@ public class Detail_wisata extends AppCompatActivity {
         wvContent.loadData(contentwvContent, "text/html", null);
 
     }
-}
+
+    }
+

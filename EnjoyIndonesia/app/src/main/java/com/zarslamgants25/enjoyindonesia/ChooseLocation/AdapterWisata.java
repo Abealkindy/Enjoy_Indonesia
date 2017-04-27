@@ -53,7 +53,6 @@ class AdapterWisata extends RecyclerView.Adapter<AdapterWisata.ViewHolder> {
             public void onClick(View v) {
                 Intent a = new Intent(v.getContext(),Detail_wisata.class);
                 a.putExtra("id_wisata", daftarWisatass.get(position).id_wisata);
-                a.putExtra("popular", daftarWisatass.get(position).popular_wisata);
                 v.getContext().startActivity(a);
             }
         });
@@ -65,13 +64,13 @@ class AdapterWisata extends RecyclerView.Adapter<AdapterWisata.ViewHolder> {
         return daftarWisatass.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    protected class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView nama_wisata, lokasi_wisata, jenis_wisata;
         ImageView gambar_wisata;
         CardView cardWisata;
 
-        public ViewHolder(View itemView) {
+        protected ViewHolder(View itemView) {
             super(itemView);
 
             nama_wisata = (TextView)itemView.findViewById(R.id.tvNamaWisata);

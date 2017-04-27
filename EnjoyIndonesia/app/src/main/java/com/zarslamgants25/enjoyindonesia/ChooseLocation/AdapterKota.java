@@ -66,12 +66,12 @@ class AdapterKota extends RecyclerView.Adapter<AdapterKota.ViewHolder> {
     public int getItemCount() {
         return kumpulanKotas2.size();
     }
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    protected class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView textKota;
         ImageView imageKota;
         CardView cardKota;
-        public ViewHolder(View itemView) {
+        protected ViewHolder(View itemView) {
             super(itemView);
             textKota = (TextView)itemView.findViewById(R.id.nama_kota);
             imageKota = (ImageView)itemView.findViewById(R.id.gambarkota);

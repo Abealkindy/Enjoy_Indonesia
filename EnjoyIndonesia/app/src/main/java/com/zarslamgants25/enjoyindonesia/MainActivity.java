@@ -198,27 +198,29 @@ public class MainActivity extends AppCompatActivity
 //
 //        }
  if (id == R.id.nav_news) {
-            Intent news = new Intent(getApplicationContext(), News.class);
-            startActivity(news);
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_about) {
+     Intent news = new Intent(getApplicationContext(), News.class);
+     startActivity(news);
+//        } else if (id == R.id.nav_share) {
+//
+//        }
+ }else if (id == R.id.nav_about) {
             Intent about = new Intent(getApplicationContext(), About.class);
             startActivity(about);
         } else if (id == R.id.nav_exit) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setMessage("Apakah kamu ingin keluar ?");
-            builder.setCancelable(false);
-            builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    MainActivity.this.finish();
-                }
-            }).setNegativeButton("Tidak", null).show();
-        } else if (id == R.id.nav_category) {
-            Intent category = new Intent(getApplicationContext(), Category.class);
-            startActivity(category);
-        } else if (id == R.id.nav_maps) {
+     AlertDialog.Builder builder = new AlertDialog.Builder(context);
+     builder.setMessage("Apakah kamu ingin keluar ?");
+     builder.setCancelable(false);
+     builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+         @Override
+         public void onClick(DialogInterface dialogInterface, int i) {
+             MainActivity.this.finish();
+         }
+     }).setNegativeButton("Tidak", null).show();
+//        } else if (id == R.id.nav_category) {
+//            Intent category = new Intent(getApplicationContext(), Category.class);
+//            startActivity(category);
+//        }
+ } else if (id == R.id.nav_maps) {
             Intent map = new Intent(getApplicationContext(), MapsActivity.class);
             startActivity(map);
         }

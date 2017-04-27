@@ -66,12 +66,12 @@ class AdapterChooseLocation extends RecyclerView.Adapter<AdapterChooseLocation.V
         return dataProvinsiss.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+   protected class ViewHolder extends RecyclerView.ViewHolder {
         TextView textProvinsi;
         ImageView imageProvinsi;
         CardView cardProvinsi;
 
-        public ViewHolder(View itemView) {
+        protected ViewHolder(View itemView) {
             super(itemView);
             cardProvinsi = (CardView) itemView.findViewById(R.id.card_provinsi);
             textProvinsi = (TextView) itemView.findViewById(R.id.nama_provinsi);

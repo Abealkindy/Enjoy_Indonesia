@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,8 +33,8 @@ public class ChooseLocation extends Fragment {
     RecyclerView recylerViewProvinsi;
     RequestQueue queue;
     StringRequest stringRequest;
-    KumpulanUrl kumpulanUrl;
     ParsingGson1 parsingGson1;
+    RelativeLayout relative_normal, relative_error;
 
     public ChooseLocation() {
         // Required empty public constructor
@@ -48,8 +50,32 @@ public class ChooseLocation extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recylerViewProvinsi.setLayoutManager(linearLayoutManager);
 
-        String aa = (KumpulanUrl.URL_PROVINSI);
+        relative_error = (RelativeLayout)view.findViewById(R.id.relative_no_internet);
+        relative_normal = (RelativeLayout)view.findViewById(R.id.relative_normal);
+        relative_normal.setVisibility(View.VISIBLE);
+        relative_error.setVisibility(View.GONE);
 
+
+        Button button_error = (Button)view.findViewById(R.id.button_error);
+        button_error.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relative_error.setVisibility(View.GONE);
+                loadurl();
+            }
+        });
+
+
+
+
+
+        // Inflate the layout for this fragment
+        loadurl();
+        return view;
+    }
+
+    private void loadurl() {
+        String aa = (KumpulanUrl.URL_PROVINSI);
         queue = Volley.newRequestQueue(getActivity());
 
         stringRequest = new StringRequest(Request.Method.POST, aa, new Response.Listener<String>() {
@@ -71,13 +97,11 @@ public class ChooseLocation extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "Maaf Internet Lambat", Toast.LENGTH_SHORT).show();
+                relative_error.setVisibility(View.VISIBLE);
+                relative_normal.setVisibility(View.GONE);
             }
         });
         queue.add(stringRequest);
-
-        // Inflate the layout for this fragment
-        return view;
     }
 
 }

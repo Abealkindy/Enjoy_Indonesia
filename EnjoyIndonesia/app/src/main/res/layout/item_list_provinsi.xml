@@ -21,10 +21,11 @@
                 android:layout_height="wrap_content"
                 android:text="Jawa Barat"
                 android:id="@+id/nama_provinsi"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical|center"
                 android:gravity="center"
                 android:textColor="#FFFF"
                 android:background="#14af03"
+                android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"/>
         </LinearLayout>
 
